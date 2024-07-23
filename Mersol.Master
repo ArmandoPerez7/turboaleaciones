@@ -1,0 +1,313 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Mersol.master.vb" Inherits="Mersol.Mersol" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Dashboard | Sistema Mersol Sureste</title>
+    <!-- App favicon -->
+    <link rel="icon" href="dist/assets/images/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- App css -->
+    <link href="dist/assets/css/app.css" rel="stylesheet"/>
+    <!-- icons -->
+    <link href="dist/assets/css/icons.min.css" rel="stylesheet" />
+    
+</head>
+<body class="loading" data-layout-color="light"  data-layout-mode="default" data-layout-size="fluid" data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='true'>
+    <div id="container_loading" style="visibility: hidden; display: none;">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <span class="loading-c">Cargando...</span>
+    </div>
+    <form runat="server">
+    <!-- Begin page -->
+    <div id="wrapper">
+
+
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+                <ul class="list-unstyled topnav-menu float-end mb-0">
+
+                    <li class="dropdown notification-list topbar-dropdown">
+                        <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="dist/assets/images/users/user-1.png" alt="user-image" class="rounded-circle" />
+                            <span class="pro-user-name ms-1">
+                                <asp:Label ID="txtUsuario" runat="server" CssClass="" Text=""></asp:Label> <i class="mdi mdi-chevron-down"></i> 
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                            <!-- item-->
+                            <div class="dropdown-header noti-title">
+                                <h6 class="text-overflow m-0">¡Bienvenido!</h6>
+                            </div>
+    
+                            <!-- item-->
+                            <a href="#" class="dropdown-item notify-item">
+                                <i class="fe-user"></i>
+                                <span>Mi cuenta</span>
+                            </a>
+    
+                            <div class="dropdown-divider"></div>
+    
+                            <!-- item-->
+                                
+                            <span><asp:LinkButton ID="BtnCerrar2" CssClass="dropdown-item notify-item" runat="server" OnClick="BtnCerrar_Click"><i class="fe-log-out"></i> Cerrar sesión</asp:LinkButton></span>
+  
+                        </div>
+                    </li>
+    
+                </ul>
+    
+                <!-- LOGO -->
+                <div class="logo-box">
+                    <a href="dashboard.html" class="logo logo-dark text-center">
+                        <span class="logo-sm">
+                            <img src="dist/assets/images/logo.png" alt="" height="60" />
+                        </span>
+                        <span class="logo-lg">
+                            <img src="dist/assets/images/logo_merosol_sureste.png" alt="" height="65" />
+                        </span>
+                    </a>
+                </div>
+
+                <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+                    <li>
+                        <button class="button-menu-mobile disable-btn waves-effect" onclick="evitarAutoPostBack()">
+                            <i class="fe-menu"></i>
+                        </button>
+                    </li>
+    
+                    <li>
+                        <h4 class="page-title-main"></h4>
+                    </li>
+            
+                </ul>
+
+                <div class="clearfix"></div> 
+               
+        </div>
+        <!-- end Topbar -->
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+
+            <div class="h-100" data-simplebar>
+
+                    <!-- User box -->
+                <div class="user-box text-center">
+
+                    <img src="dist/assets/images/users/user-1.png" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-md" />
+                        <div class="dropdown">
+                            <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown"  aria-expanded="false"><asp:Label ID="txtUsuario2" runat="server" CssClass="" Text=""></asp:Label> <i class="mdi mdi-chevron-down"></i></a>
+                            <div class="dropdown-menu user-pro-dropdown">
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="fe-user me-1"></i>
+                                    <span>Mi cuenta</span>
+                                </a>
+        
+                                <!-- item-->
+                                    
+                                <span><asp:LinkButton ID="BtnCerrar" CssClass="dropdown-item notify-item" runat="server" OnClick="BtnCerrar_Click"><i class="fe-log-out me-1"></i> Cerrar sesión</asp:LinkButton></span>
+
+                            </div>
+                        </div>
+
+                    <p class="text-muted left-user-info"><asp:Label ID="txtPuesto" runat="server" CssClass="" Text=""></asp:Label></p>
+
+                </div>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+
+                    <ul id="side-menu">
+
+
+                    </ul>
+
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+         
+        <div class="content-page">
+            <div class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+                </asp:ContentPlaceHolder>
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <script>document.write(new Date().getFullYear())</script> &copy; Sistema <a href="">Mersol Sureste</a> 
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-end footer-links d-none d-sm-block">
+                                <a href="javascript:void(0);">Página Oficial Mersol Sureste</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+    </form>
+    <!-- Vendor -->
+    <script src="dist/assets/libs/jquery/jquery.min.js"></script>
+    <script src="dist/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="dist/assets/libs/node-waves/waves.min.js"></script>
+    <script src="dist/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="dist/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="dist/assets/libs/feather-icons/feather.min.js"></script>
+  
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+
+    <!-- App js-->
+    <script src="dist/assets/js/app.js"></script>
+
+    <script type="text/javascript">
+
+        function evitarAutoPostBack() {
+            // Realiza cualquier lógica adicional que necesites antes de evitar el AutoPostBack
+
+            // Evita el evento predeterminado para evitar el envío del formulario
+            event.preventDefault();
+
+            // Si es necesario, puedes agregar más acciones aquí
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "auth-login.aspx/GetJson",
+            data: '{ usuario: ' + <%=Session("Id_Usuario")%> +' }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                datos = JSON.parse(response.d);
+                //Convertimos el valor a un objeto de tipo Json
+                var ob = Object.values(datos);
+                var menu = JSON.parse(ob[0]);
+                var detalleMenu = JSON.parse(ob[1]);
+
+                var conthtml = "";
+
+                conthtml += '<li>';
+                conthtml += '<a href="inicio.aspx">';
+                conthtml += '<i class="mdi mdi-home"></i>';
+                conthtml += '<span> Inicio </span>';
+                conthtml += '</a>';
+                conthtml += '</li>';
+
+                conthtml += '<li>';
+                conthtml += '<a href="tb31_arrollomoreno.aspx">';
+                conthtml += '<i class="mdi mdi-email-check-outline"></i>';
+                conthtml += '<span> TB31 Arrollo Moreno </span>';
+                conthtml += '</a>';
+                conthtml += '</li>';
+
+                for (var i = 0; i < menu.length; i++) {
+                    
+                    if (menu[i]["Tipo"] === "URL") {
+                        conthtml += '<li>';
+                        conthtml += '<a href="' + menu[i]["Ruta_Archivo"] +'">';
+                        conthtml += '<i class="mdi ' + menu[i]["Icono"] +'"></i>';
+                        conthtml += '<span> ' + menu[i]["Nombre"] + ' </span>';
+                        conthtml += '</a>';
+                        conthtml += '</li>';
+                    }
+
+                    if (menu[i]["Tipo"] === "MENU") {
+                        conthtml += '<li>';
+                        conthtml += '<a href="#' + menu[i]["Ruta_Archivo"] + '" data-bs-toggle="collapse">';
+                        conthtml += '<i class="mdi ' + menu[i]["Icono"] + '"></i>';
+                        conthtml += '<span> ' + menu[i]["Nombre"] + ' </span>';
+                        conthtml += '<span class="menu-arrow"></span>';
+                        conthtml += '</a>';
+                        conthtml += '<div class="collapse" id="' + menu[i]["Ruta_Archivo"] + '">';
+                        conthtml += '<ul class="nav-second-level">';
+                        crear_menu(menu[i]["Id"], menu[i]["Id"]);
+                        conthtml += '</ul>';
+                        conthtml += '</div>';
+                        conthtml += '</li>';
+                    }
+                }
+
+                function crear_menu(IdPadre, IdMenu) {
+                    for (var j = 0; j < detalleMenu.length; j++) {
+                        if (detalleMenu[j]["Tipo"] === "URL" && detalleMenu[j]["Id_Padre"] === IdPadre && detalleMenu[j]["Id_Menu"] === IdMenu) {
+                            conthtml += '<li>';
+                            conthtml += '<a href="' + detalleMenu[j]["Ruta_Archivo"] + '"> ' + detalleMenu[j]["Nombre"] +'</a>';
+                            conthtml += '</li>';
+                        }
+                        
+                        if (detalleMenu[j]["Tipo"] === "MENU" && detalleMenu[j]["Id_Padre"] === 0 && detalleMenu[j]["Id_Menu"] === IdMenu) {
+                            conthtml += '<li>';
+                            conthtml += '<a href="#' + detalleMenu[j]["Ruta_Archivo"] + '" data-bs-toggle="collapse">';
+                            conthtml += '<span> ' + detalleMenu[j]["Nombre"] + ' </span>';
+                            conthtml += '<span class="menu-arrow"></span>';
+                            conthtml += '</a>';
+                            conthtml += '<div class="collapse" id="' + detalleMenu[j]["Ruta_Archivo"] + '">';
+                            conthtml += '<ul class="nav-second-level">';
+                            crear_submenu(detalleMenu[j]["Id"], detalleMenu[j]["Id_Menu"]);
+                            //console.log("Id: " + detalleMenu[j]["Id"] + "\nId_Menu: " + detalleMenu[j]["Id_Menu"]);
+                            conthtml += '</ul>';
+                            conthtml += '</div>';
+                            conthtml += '</li>';
+                        }
+                    }
+                }
+
+                function crear_submenu(IdPadre, IdMenu) {
+                    for (var j = 0; j < detalleMenu.length; j++) {
+                        if (detalleMenu[j]["Tipo"] === "URL" && detalleMenu[j]["Id_Padre"] === IdPadre && detalleMenu[j]["Id_Menu"] === IdMenu) {
+                            conthtml += '<li>';
+                            conthtml += '<a href="' + detalleMenu[j]["Ruta_Archivo"] + '"> ' + detalleMenu[j]["Nombre"] + '</a>';
+                            conthtml += '</li>';
+                        }
+                    }
+                }
+                document.getElementById("side-menu").innerHTML = conthtml;
+            },
+            error: function (data) {
+                var errors = data.responseJSON;
+                if (errors) {
+                    $.each(errors, function (i) {
+                        console.log(errors[i]);
+                    });
+                }
+            },
+            timeout: 3600000,
+        });
+    </script>
+
+</body>
+</html>
